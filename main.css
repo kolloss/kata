@@ -1,0 +1,374 @@
+/*
+    Сброс стилей
+    ссылка на исходник: https://medium.com/@stasonmars/современный-сброс-css-f5816963c82b
+*/
+
+/* Указываем box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Убираем внутренние отступы */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Убираем внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Выставляем основные настройки по-умолчанию для body */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Упрощаем работу с изображениями */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Указываем понятную периодичность в потоке данных у article*/
+article > * + * {
+  margin-top: 1em;
+}
+
+/* Наследуем шрифты для инпутов и кнопок */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Подключаем шрифт */
+@font-face {
+    font-family: "Barlow";
+    font-style: normal;
+    font-weight: 400;
+    src: url("./fonts/barlow/Barlow-Regular.otf") format("opentype")
+  }
+
+body {
+    display: flex;
+    font-family: "Barlow";
+    font-weight: normal;
+    background-color: #EFF6FF;
+    color: #2A4A5C;
+    padding: 10px 40px;
+}
+header {
+    background-image: url(img/bg.jpg);
+    background-repeat: no-repeat;
+    padding: 30px;
+    flex: 0 1 50%;
+}
+header img {
+    width: 120px;
+}
+main {
+    padding: 90px 60px;
+    background-color: #fff;
+    flex: 0 1 50%;
+}
+p {
+    color: #7B8A92;
+}
+.btns {
+    display: flex;
+    justify-content: space-between;
+}
+.btn {
+    margin: 50px 0;
+    font-size: 16px;
+    border: none;
+    color: #fff;
+    padding: 5px 50px;
+    cursor: pointer;
+}
+.btn:hover{
+  outline: 1px solid #2A4A5C;
+  transition: all 0.3s ease 0s;
+}
+.btn_fb {
+    background-image: url(./img/facebook.svg);
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: 10px;
+    background-color: #255A9B;
+    width: 47%;
+    
+}
+.btn_in {
+    background-image: url(./img/linkedin.svg);
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: 15px;
+    background-color: #0076B6;
+    width: 47%;
+}
+
+/* Для OR */
+.line {  
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 14px;
+    width: 50%;
+    margin: auto;
+}
+.line:before,
+.line:after {
+ content: '';
+ display: inline-block;
+ width: 100%;
+ height: 1px;
+ background: #EEEEEE;
+ z-index: -1;
+ position: relative;
+ vertical-align: middle;
+}
+.line:before {
+    right: 15px;
+    margin: 0 0 0 -100%;
+}
+.line:after {
+    left: 15px;
+    margin: 0 -100% 0 0;
+}
+
+/* Стили полей для ввода почты и телефона */
+.form {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+.form__item {
+    width: 47%;
+    position: relative;
+}
+.form__field {
+    width: 100%;
+    padding: 18px 7px 7px 7px;
+    background: transparent;
+    transition: border-color 0.2s;
+    border: 0;
+    outline: 1px solid #eee;
+}  
+.form__field::placeholder {
+    color: transparent;
+}
+.form__field:placeholder-shown ~ .form__label {
+    cursor: text;
+    top: 20px;
+}
+  
+  
+.form__label {
+    position: absolute;
+    top: 0;
+    left: 7px;
+    display: block;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.form__field:focus {
+padding-bottom: 7px;  
+border-left: 3px solid #3698FB;
+padding-left: 4.5px;
+}
+.form__field:focus ~ .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+}
+/* reset input */
+.form__field:required,.form__field:invalid {
+    box-shadow:none;
+}
+
+h2 {
+    margin-top: 50px;
+}
+
+.main__radio {
+    margin-top: 50px;
+}
+/* для элемента input c type="radio" */
+.radio__field {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+/* для элемента label связанного с .radio__field */
+.radio__field+label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+/* создание в label псевдоэлемента  before со следующими стилями */
+.radio__field+label::before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 3px solid #adb5bd;
+  border-radius: 50%;
+  margin-right: 0.5em;
+}
+/* стили при наведении курсора на радио */
+.radio__field:not(:disabled):not(:checked)+label:hover::before {
+  border-color: #b3d7ff;
+}
+/* стили для активной радиокнопки (при нажатии на неё) */
+.radio__field:not(:disabled):active+label::before {
+  /* background-color: #b3d7ff; */
+  border-color: #b3d7ff;
+}
+/* стили для радиокнопки, находящейся в фокусе */
+.radio__field:focus+label::before {
+  /* box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); */
+}
+/* стили для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked */
+.radio__field:focus:not(:checked)+label::before {
+  border-color: #80bdff;
+}
+/* стили для радиокнопки, находящейся в состоянии checked */
+.radio__field:checked+label::before {
+  border-color: #3698FB;
+  /* background-color: #0b76ef; */
+  /* background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e"); */
+}
+/* стили для радиокнопки, находящейся в состоянии disabled */
+.radio__field:disabled+label::before {
+  background-color: #e9ecef;
+}
+.info{
+  background-image: url(./img/info.svg);
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 15px;
+  display: inline-block;
+  background-size: contain;
+  opacity: 0.3;
+}
+
+.info:hover ~ .tooltip {
+  opacity: 1;
+  transition: all 0.3s ease 0s;
+}
+
+.tooltip {
+  background: white;
+  display: inline-block;
+  opacity: 0;
+  width: 240px;
+  padding: 13px;
+  font-size: 14px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  margin: 20px 0 40px;
+  transition: all 0.3s ease 0s;
+}
+
+.main__checkbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.main__checkbox+label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+.main__checkbox+label::before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid #adb5bd;
+  border-radius: 0.25em;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 80% 80%;
+}
+.main__checkbox:checked+label::before {
+  border-color: #0b76ef;
+  background-image: url(img/check.svg);
+}
+/* стили при наведении курсора на checkbox */
+.main__checkbox:not(:disabled):not(:checked)+label:hover::before {
+  border-color: #b3d7ff;
+}
+/* стили для активного состояния чекбокса (при нажатии на него) */
+.main__checkbox:not(:disabled):active+label::before {
+  background-color: #b3d7ff;
+  border-color: #b3d7ff;
+}
+/* стили для чекбокса, находящегося в фокусе */
+.main__checkbox:focus+label::before {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+/* стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked */
+.main__checkbox:focus:not(:checked)+label::before {
+  border-color: #80bdff;
+}
+/* стили для чекбокса, находящегося в состоянии disabled */
+.main__checkbox:disabled+label::before {
+  background-color: #e9ecef;
+}
+
+.form__submit {
+  background-color: #3698FB;
+  border-radius: 2px;
+  font-weight: bold;
+}
